@@ -30,9 +30,24 @@ export default function Home() {
         </div>
 
         <div class="mt-12 text-center">
-          <p class="text-gray-600 mb-4">Coming Soon: Smart Calendar Integration</p>
-          <div class="text-sm text-gray-500">
+          <p class="text-gray-600 mb-4">Smart Calendar Integration</p>
+          <div class="text-sm text-gray-500 mb-8">
             Generate personalized schedules that respect your work hours
+          </div>
+
+          <div class="flex justify-center space-x-4">
+            <a
+              href="/register"
+              class="bg-indigo-600 text-white px-8 py-3 rounded-md hover:bg-indigo-700 transition duration-150 ease-in-out"
+            >
+              Get Started
+            </a>
+            <a
+              href="/login"
+              class="bg-white text-indigo-600 px-8 py-3 rounded-md border border-indigo-600 hover:bg-indigo-50 transition duration-150 ease-in-out"
+            >
+              Sign In
+            </a>
           </div>
         </div>
       </div>
