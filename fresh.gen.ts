@@ -18,6 +18,8 @@ import * as $index from "./routes/index.tsx";
 import * as $login from "./routes/login.tsx";
 import * as $register from "./routes/register.tsx";
 import * as $Counter from "./islands/Counter.tsx";
+import * as $LoginForm from "./islands/LoginForm.tsx";
+import * as $RegisterForm from "./islands/RegisterForm.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -40,6 +42,8 @@ const manifest = {
   },
   islands: {
     "./islands/Counter.tsx": $Counter,
+    "./islands/LoginForm.tsx": $LoginForm,
+    "./islands/RegisterForm.tsx": $RegisterForm,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
