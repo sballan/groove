@@ -84,11 +84,13 @@ export async function getUserFromSession(sessionId: string): Promise<User | null
 
 export function getSessionCookie(sessionId: string): string {
   const expires = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
-  return `session=${sessionId}; Path=/; HttpOnly; Secure; SameSite=Strict; Expires=${expires.toUTCString()}`;
+  // Remove Secure flag for local development (HTTP)
+  // In production, you should add it back for HTTPS
+  return `session=${sessionId}; Path=/; HttpOnly; SameSite=Lax; Expires=${expires.toUTCString()}`;
 }
 
 export function clearSessionCookie(): string {
-  return `session=; Path=/; HttpOnly; Secure; SameSite=Strict; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+  return `session=; Path=/; HttpOnly; SameSite=Lax; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
 }
 
 export function getSessionIdFromCookie(cookieHeader: string | null): string | null {
