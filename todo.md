@@ -31,7 +31,7 @@ respecting work hours and existing commitments.
 
 ### Phase 1: Core Data Models & Database Setup
 
-- [ ] Set up Deno KV database schemas
+- [x] Set up Deno KV database schemas
 - [ ] Create habit types (People, Activities, Responsibilities)
 - [ ] Implement habit CRUD operations
 - [ ] Add user management and authentication
