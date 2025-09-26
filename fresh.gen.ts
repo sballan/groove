@@ -8,15 +8,21 @@ import * as $_middleware from "./routes/_middleware.ts";
 import * as $api_auth_login from "./routes/api/auth/login.ts";
 import * as $api_auth_logout from "./routes/api/auth/logout.ts";
 import * as $api_auth_register from "./routes/api/auth/register.ts";
+import * as $api_calendar_feed_userId_ics from "./routes/api/calendar/feed/[userId].ics.ts";
 import * as $api_habits_id_ from "./routes/api/habits/[id].ts";
 import * as $api_habits_index from "./routes/api/habits/index.ts";
 import * as $api_joke from "./routes/api/joke.ts";
+import * as $api_work_hours_userId_ from "./routes/api/work-hours/[userId].ts";
+import * as $calendar from "./routes/calendar.tsx";
 import * as $dashboard from "./routes/dashboard.tsx";
 import * as $greet_name_ from "./routes/greet/[name].tsx";
+import * as $habits_id_edit from "./routes/habits/[id]/edit.tsx";
+import * as $habits_index from "./routes/habits/index.tsx";
 import * as $habits_new from "./routes/habits/new.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $login from "./routes/login.tsx";
 import * as $register from "./routes/register.tsx";
+import * as $settings_work_hours from "./routes/settings/work-hours.tsx";
 import * as $Counter from "./islands/Counter.tsx";
 import * as $LoginForm from "./islands/LoginForm.tsx";
 import * as $RegisterForm from "./islands/RegisterForm.tsx";
@@ -30,15 +36,21 @@ const manifest = {
     "./routes/api/auth/login.ts": $api_auth_login,
     "./routes/api/auth/logout.ts": $api_auth_logout,
     "./routes/api/auth/register.ts": $api_auth_register,
+    "./routes/api/calendar/feed/[userId].ics.ts": $api_calendar_feed_userId_ics,
     "./routes/api/habits/[id].ts": $api_habits_id_,
     "./routes/api/habits/index.ts": $api_habits_index,
     "./routes/api/joke.ts": $api_joke,
+    "./routes/api/work-hours/[userId].ts": $api_work_hours_userId_,
+    "./routes/calendar.tsx": $calendar,
     "./routes/dashboard.tsx": $dashboard,
     "./routes/greet/[name].tsx": $greet_name_,
+    "./routes/habits/[id]/edit.tsx": $habits_id_edit,
+    "./routes/habits/index.tsx": $habits_index,
     "./routes/habits/new.tsx": $habits_new,
     "./routes/index.tsx": $index,
     "./routes/login.tsx": $login,
     "./routes/register.tsx": $register,
+    "./routes/settings/work-hours.tsx": $settings_work_hours,
   },
   islands: {
     "./islands/Counter.tsx": $Counter,
