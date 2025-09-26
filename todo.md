@@ -1,14 +1,19 @@
 # Groove - Habit Tracker & Calendar Integration
 
 ## Project Overview
-Groove is a habit tracking app that helps users maintain consistent engagement with three key areas of life:
+
+Groove is a habit tracking app that helps users maintain consistent engagement
+with three key areas of life:
+
 1. **People** - Important relationships to nurture
 2. **Activities** - Fulfilling pursuits and hobbies
 3. **Responsibilities** - Obligations and necessary tasks
 
-The app generates calendar feeds that intelligently schedule these habits while respecting work hours and existing commitments.
+The app generates calendar feeds that intelligently schedule these habits while
+respecting work hours and existing commitments.
 
 ## Technical Stack
+
 - **Framework**: Deno Fresh 1.7.3
 - **Runtime**: Deno 2.5.2
 - **Frontend**: Preact with Tailwind CSS
@@ -18,7 +23,14 @@ The app generates calendar feeds that intelligently schedule these habits while 
 
 ## Implementation Plan
 
+### General Strategy
+
+- Test everything we can. Use the built in deno test runner when possible
+- Testing of routes, handlers, should follow best practices for the Fresh
+  framework. See https://fresh.deno.dev/docs/testing
+
 ### Phase 1: Core Data Models & Database Setup
+
 - [ ] Set up Deno KV database schemas
 - [ ] Create habit types (People, Activities, Responsibilities)
 - [ ] Implement habit CRUD operations
@@ -26,6 +38,7 @@ The app generates calendar feeds that intelligently schedule these habits while 
 - [ ] Create basic data validation
 
 ### Phase 2: Habit Management Interface
+
 - [ ] Build habit creation forms for each category
 - [ ] Implement habit listing and editing pages
 - [ ] Add habit deletion with confirmation
@@ -33,6 +46,7 @@ The app generates calendar feeds that intelligently schedule these habits while 
 - [ ] Add habit priority levels and tags
 
 ### Phase 3: Schedule Generation Engine
+
 - [ ] Build core scheduling algorithm
 - [ ] Implement work hours configuration
 - [ ] Create conflict detection for existing events
@@ -41,6 +55,7 @@ The app generates calendar feeds that intelligently schedule these habits while 
 - [ ] Add duration estimation for each habit
 
 ### Phase 4: Calendar Integration
+
 - [ ] Generate iCal/ICS calendar feeds
 - [ ] Create calendar subscription endpoints
 - [ ] Implement calendar feed regeneration on habit changes
@@ -48,6 +63,7 @@ The app generates calendar feeds that intelligently schedule these habits while 
 - [ ] Support multiple calendar feeds (work vs personal)
 
 ### Phase 5: Work Schedule Integration
+
 - [ ] Create work schedule configuration interface
 - [ ] Support multiple work schedule patterns
 - [ ] Add holiday and time-off management
@@ -55,6 +71,7 @@ The app generates calendar feeds that intelligently schedule these habits while 
 - [ ] Add integration with external calendar APIs (Google Calendar, Outlook)
 
 ### Phase 6: Advanced Features
+
 - [ ] Habit completion tracking and statistics
 - [ ] Smart suggestions based on habit patterns
 - [ ] Habit streak tracking and motivation
@@ -63,6 +80,7 @@ The app generates calendar feeds that intelligently schedule these habits while 
 - [ ] Mobile-responsive design improvements
 
 ### Phase 7: Analytics & Insights
+
 - [ ] Create habit completion dashboard
 - [ ] Add trend analysis and reporting
 - [ ] Implement habit success metrics
@@ -72,6 +90,7 @@ The app generates calendar feeds that intelligently schedule these habits while 
 ## Database Schema (Deno KV)
 
 ### Users
+
 ```typescript
 interface User {
   id: string;
@@ -85,20 +104,21 @@ interface User {
 ```
 
 ### Habits
+
 ```typescript
 interface Habit {
   id: string;
   userId: string;
   name: string;
   description?: string;
-  category: 'people' | 'activities' | 'responsibilities';
+  category: "people" | "activities" | "responsibilities";
   frequency: {
-    type: 'daily' | 'weekly' | 'monthly' | 'custom';
+    type: "daily" | "weekly" | "monthly" | "custom";
     interval: number; // For custom frequencies
     weekdays?: number[]; // For weekly patterns
   };
   duration: number; // minutes
-  priority: 'low' | 'medium' | 'high';
+  priority: "low" | "medium" | "high";
   tags: string[];
   active: boolean;
   createdAt: Date;
@@ -107,19 +127,21 @@ interface Habit {
 ```
 
 ### Work Hours
+
 ```typescript
 interface WorkHours {
-  monday: { start: string; end: string; } | null;
-  tuesday: { start: string; end: string; } | null;
-  wednesday: { start: string; end: string; } | null;
-  thursday: { start: string; end: string; } | null;
-  friday: { start: string; end: string; } | null;
-  saturday: { start: string; end: string; } | null;
-  sunday: { start: string; end: string; } | null;
+  monday: { start: string; end: string } | null;
+  tuesday: { start: string; end: string } | null;
+  wednesday: { start: string; end: string } | null;
+  thursday: { start: string; end: string } | null;
+  friday: { start: string; end: string } | null;
+  saturday: { start: string; end: string } | null;
+  sunday: { start: string; end: string } | null;
 }
 ```
 
 ### Habit Completions
+
 ```typescript
 interface HabitCompletion {
   id: string;
@@ -132,6 +154,7 @@ interface HabitCompletion {
 ```
 
 ## API Routes Structure
+
 ```
 /api/
 ├── auth/
@@ -154,24 +177,30 @@ interface HabitCompletion {
 ## Key Features to Implement
 
 ### Smart Scheduling Algorithm
-1. **Priority Scoring**: Combine habit priority, frequency requirements, and time since last completion
+
+1. **Priority Scoring**: Combine habit priority, frequency requirements, and
+   time since last completion
 2. **Conflict Avoidance**: Check against work hours and existing calendar events
 3. **Optimal Spacing**: Distribute habits evenly to avoid clustering
-4. **Adaptive Timing**: Learn from user completion patterns to suggest better times
+4. **Adaptive Timing**: Learn from user completion patterns to suggest better
+   times
 
 ### Calendar Feed Generation
+
 1. **Standard iCal Format**: Compatible with all major calendar applications
 2. **Dynamic Updates**: Auto-refresh when habits change
 3. **Color Coding**: Different colors for each habit category
 4. **Rich Descriptions**: Include habit details and completion instructions
 
 ### User Experience Enhancements
+
 1. **Progressive Web App**: Offline capability and mobile optimization
 2. **Habit Templates**: Pre-built habits for common activities
 3. **Batch Operations**: Bulk edit multiple habits
 4. **Quick Actions**: One-click habit completion and rescheduling
 
 ## Testing Strategy
+
 - [ ] Unit tests for scheduling algorithm
 - [ ] Integration tests for calendar generation
 - [ ] E2E tests for user workflows
@@ -179,6 +208,7 @@ interface HabitCompletion {
 - [ ] Calendar client compatibility tests
 
 ## Deployment & Infrastructure
+
 - [ ] Set up Deno Deploy hosting
 - [ ] Configure domain and SSL
 - [ ] Set up monitoring and logging
@@ -186,6 +216,7 @@ interface HabitCompletion {
 - [ ] Create deployment pipeline
 
 ## Security Considerations
+
 - [ ] Input validation and sanitization
 - [ ] Rate limiting on API endpoints
 - [ ] Secure session management
@@ -193,6 +224,7 @@ interface HabitCompletion {
 - [ ] Data encryption for sensitive information
 
 ## Future Enhancements
+
 - [ ] Team/family habit sharing
 - [ ] Integration with fitness trackers
 - [ ] AI-powered habit recommendations
